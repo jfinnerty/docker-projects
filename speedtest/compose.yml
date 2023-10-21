@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+    speedtest-tracker:
+        container_name: speedtest-tracker
+        ports:
+            - '8080:80'
+            - '8443:443'
+        environment:
+            - PUID=147
+            - PGID=1000
+        volumes:
+            - '/home/johnf/docker/speedtest:/config'
+            - '/home/johnf/docker/speedtest:/etc/ssl/web'
+        image: 'ghcr.io/alexjustesen/speedtest-tracker:latest'
+        restart: unless-stopped

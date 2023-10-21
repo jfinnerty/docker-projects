@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+    cosmos-server:
+        ports:
+            - '8080:80'
+            - '443:443'
+        container_name: cosmos-server
+        hostname: cosmos-server
+        restart: always
+        privileged: true # Required for SELinux
+        volumes:
+            - '/var/run/docker.sock:/var/run/docker.sock'
+            - '/var/lib/cosmos:/config'
+            - '/:/mnt/host'
+        image: 'azukaar/cosmos-server:latest'
